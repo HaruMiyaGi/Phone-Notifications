@@ -32,7 +32,8 @@ app.post('/api/message', async (req, res) => {
 		if (secret != process.env.SECRET_TOKEN || 'secret') throw `secret: "${process.env.SECRET_TOKEN || 'secret'}" does not match with secret recieved: "${secret}"`
 		const devices = await getDevices()
 			.then((data) => data.devices)
-			.catch(() => {
+			.catch((e) => {
+				console.log(e)
 				throw 'Failed to get devices.'
 			})
 
@@ -40,7 +41,8 @@ app.post('/api/message', async (req, res) => {
 			devices.map(async ({ iden }) => {
 				await sendMessage(iden, title, message)
 					.then(() => true)
-					.catch(() => {
+					.catch((e) => {
+						console.log(e)
 						throw 'Failed to send message.'
 					})
 			}),
