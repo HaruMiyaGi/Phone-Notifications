@@ -1,0 +1,11 @@
+{
+	"name": "hreoku_phone_notifications",
+	"version": "1.0.0",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"express": "^4.17.2",
+		"pushbullet": "^2.4.0"
+	}
+}
