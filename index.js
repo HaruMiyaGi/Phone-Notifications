@@ -29,7 +29,7 @@ app.post('/api/message', async (req, res) => {
 	const { title, message, secret } = req.body || {}
 
 	try {
-		if (secret != process.env.SECRET_TOKEN || 'secret') throw `secret: "${process.env.SECRET_TOKEN || 'secret'}" does not match with secret recieved: "${secret}"`
+		if (secret !== (process.env.SECRET_TOKEN || 'secret')) throw `secret: "${process.env.SECRET_TOKEN || 'secret'}" does not match with secret recieved: "${secret}"`
 		const devices = await getDevices()
 			.then((data) => data.devices)
 			.catch((e) => {
