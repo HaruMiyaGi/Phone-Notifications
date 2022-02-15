@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 80
+const PORT = process.env.PORT || 80
 
 app.use(express.json())
 
@@ -53,6 +53,6 @@ app.post('/api/message', async (req, res) => {
 	}
 })
 
-app.listen(port, () => {
-	console.log(`Example app listening on port http://localhost:${port}`)
+app.listen(PORT, () => {
+	console.log(`Example app listening on port http://localhost:${PORT}`)
 })
