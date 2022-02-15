@@ -29,7 +29,7 @@ app.post('/api/message', async (req, res) => {
 	const { title, message, secret } = req.body || {}
 
 	try {
-		if (secret !== 'secret') throw 'Not verified.'
+		if (secret !== process.env.SECRET_TOKEN || 'secret') throw 'Not verified.'
 		const devices = await getDevices()
 			.then((data) => data.devices)
 			.catch(() => {
@@ -54,5 +54,5 @@ app.post('/api/message', async (req, res) => {
 })
 
 app.listen(PORT, () => {
-	console.log(`Example app listening on port http://localhost:${PORT}`)
+	console.log(`App listening on port http://localhost:${PORT}`)
 })
